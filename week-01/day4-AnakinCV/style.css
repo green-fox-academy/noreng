@@ -1,0 +1,31 @@
+body {
+  color: #333;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+  line-height: 1.5;
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Abril Fatface', serif;
+}
+
+p {
+  color: #707070;
+}
+
+.wrap {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+
+header {
+  background-image: url(bg.jpg);
+  background-position: center center;
+  background-size: cover;
+  padding: 100px 20px;
+  color: white;
+  text-align: center;
+}
