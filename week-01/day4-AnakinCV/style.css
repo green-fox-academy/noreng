@@ -26,4 +26,5 @@ header {
   padding: 100px 20px;
   color: white;
   text-align: center;
+  background-attachment: fixed;
 }
