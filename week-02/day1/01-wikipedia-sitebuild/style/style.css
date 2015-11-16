@@ -26,8 +26,18 @@ body {
   width: 100%;
 }
 
+.biography{
+  background: #f9f9f9;
+  box-sizing: border-box;
+  border: 1px solid #aaa;
+  float: right;
+  padding: 25px;
+  margin: 6px 0px 12px 12px;
+  width: 270px;
+}
+
 main {
-  background: green;
+  background: white;
   width: 100%;
 }
 
