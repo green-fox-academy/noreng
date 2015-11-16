@@ -21,9 +21,46 @@ body {
 }
 
 .main-header {
-  background: blue;
+  background: #f9f9f9;
   height: 100px;
   width: 100%;
+  position: relative;
+}
+
+nav, .search input {
+  position: absolute;
+}
+
+.user-menu {
+  right: 0;
+  top: 0;
+}
+
+.talk-menu {
+  left: 0;
+  bottom: 0;
+}
+
+.edit-menu {
+  right: 300px;
+  bottom: 0;
+}
+
+.search input {
+  width: 300px;
+  right: 0;
+  bottom: 0;
+}
+
+.main-header ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main-header li {
+  list-style: none;
+  margin-right: 10px;
 }
 
 .biography{
