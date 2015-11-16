@@ -1,0 +1,25 @@
+body {
+  color: green;
+}
+
+.container {
+  background: aqua;
+  width: 600px;
+  height: 600px;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.box {
+  background: yellow;
+  font-weight: bold;
+  font-size: 30px;
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 10px solid red;
+}
