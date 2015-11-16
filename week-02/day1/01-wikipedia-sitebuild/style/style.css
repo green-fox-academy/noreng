@@ -29,6 +29,7 @@ body {
 
 nav, .search input {
   position: absolute;
+  margin: 10px;
 }
 
 .user-menu {
