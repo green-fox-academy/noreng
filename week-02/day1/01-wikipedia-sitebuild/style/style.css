@@ -19,3 +19,20 @@ body {
   order: 0;
   width: 176px;
 }
+
+.main-header {
+  background: blue;
+  height: 100px;
+  width: 100%;
+}
+
+main {
+  background: green;
+  width: 100%;
+}
+
+.main-footer {
+  background: red;
+  height: 150px;
+  width: 100%;
+}
