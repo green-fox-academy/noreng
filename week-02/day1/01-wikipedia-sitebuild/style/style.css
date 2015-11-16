@@ -1,16 +1,21 @@
+html, body {
+  min-height: 100%
+}
+
 body {
   margin: 0;
   display: flex;
+  min-height: 100vh;
 }
 
 .main-container {
   background: yellow;
-  width: 100%;
   order: 1;
+  width: 100%;
 }
 
 .main-sidebar {
   background: aqua;
-  width: 176px;
   order: 0;
+  width: 176px;
 }
