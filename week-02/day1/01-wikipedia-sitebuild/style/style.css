@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-flow: row-reverse;
+}
+
+.main-container {
+  background: yellow;
+  width: 100%
+}
+
+.main-sidebar {
+  background: aqua;
+  width: 176px;
+}
