@@ -42,7 +42,7 @@ nav, .search input {
 }
 
 .edit-menu {
-  right: 300px;
+  right: 310px;
   bottom: 0;
 }
 
@@ -60,7 +60,12 @@ nav, .search input {
 
 .main-header li {
   list-style: none;
-  margin-right: 10px;
+}
+
+.main-header li+li {
+  border-left: 1px solid #444;
+  margin-left: 10px;
+  padding-left: 10px;
 }
 
 .biography{
