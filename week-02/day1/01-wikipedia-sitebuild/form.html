@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>GreenFoxpedia</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/form.css">
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="main-header">
+        <nav class="user-menu">
+          <ul>
+            <li>Create account</li>
+            <li>Not logged in</li>
+            <li>Talk</li>
+            <li>Contributions</li>
+            <li>Log in</li>
+          </ul>
+        </nav>
+        <nav class="talk-menu">
+          <ul>
+            <li>Article</li>
+            <li>Talk</li>
+          </ul>
+        </nav>
+        <nav class="edit-menu">
+          <ul>
+            <li>Read</li>
+            <li>Edit</li>
+            <li>View history</li>
+          </ul>
+        </nav>
+        <form class="search">
+          <input type="text" placeholder="Search" pattern="^[A-Za-z ]+$">
+        </form>
+      </header>
+      <main class="main-content">
+        <h1>Create account</h1>
+        <form action="">
+          <p>
+            <label for="username">Username</label>
+            <input type="text" id=username placeholder="Enter your username">
+          </p>
+          <p>
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter a password">
+          </p>
+          <p>
+            <label for="confirm-password">Confirm password</label>
+            <input type="password" id="confirm-password" placeholder="Enter password again">
+          </p>
+          <p>
+            <label for="email">Email address (optional)</label>
+            <input type="email" id="email" placeholder="Enter your email address">
+          </p>
+          <p>
+            <button type="submit">Create your account</button>
+          </p>
+        </form>
+      </main>
+      <footer class="main-footer"></footer>
+    </div>
+    <aside class="main-sidebar">
+      <a href="#" class="logo">Wikipedia</a>
+    </aside>
+  </body>
+</html>
