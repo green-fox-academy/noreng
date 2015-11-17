@@ -40,7 +40,7 @@ h1 {
   position: relative;
 }
 
-nav, .search input {
+.user-menu, .talk-menu, .search-bar {
   position: absolute;
   margin: 10px;
 }
@@ -55,18 +55,32 @@ nav, .search input {
   bottom: 0;
 }
 
-.edit-menu {
-  right: 320px;
-  bottom: 0;
-}
-
-.search input {
-  width: 300px;
+.search-bar {
+  display: flex;
+  flex-direction: row;
   right: 0;
   bottom: 0;
 }
 
-.search input:invalid {
+.edit-menu {
+  margin-right: 15px;
+}
+
+.search {
+  border: 1px solid #aaa;
+  background: white;
+}
+
+.search-input {
+  background: none;
+  border: none;
+  width: 300px;
+  line-height: 1.8em;
+  padding: .1em .1em .1em .5em;
+  margin: 0;
+}
+
+.search-input:invalid {
   background: red;
 }
 
