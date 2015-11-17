@@ -2,11 +2,27 @@ form p {
   display: flex;
   flex-direction: column;
   width: 290px;
+  position: relative;
 }
 
 form p label {
   font-size: 0.9em;
   line-height: 1.6em;
+}
+
+.help-link {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.help-link a {
+  color: #0645ad;
+  text-decoration: none;
+}
+
+form p a:hover {
+  text-decoration: underline;
 }
 
 form p input {
