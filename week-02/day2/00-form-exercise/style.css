@@ -1,3 +1,11 @@
-body {
-  color: #444;
+::-webkit-input-placeholder {
+ color: blue;
 }
+
+::-moz-placeholder {
+   color: blue;
+}
+
+:-ms-input-placeholder {
+   color: blue;
+ }
