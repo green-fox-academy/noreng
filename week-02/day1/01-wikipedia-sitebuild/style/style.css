@@ -1,5 +1,7 @@
 html, body {
-  min-height: 100%
+  min-height: 100%;
+  background: #f6f6f6;
+  font-family: sans-serif;
 }
 
 body {
@@ -8,21 +10,31 @@ body {
   min-height: 100vh;
 }
 
+h1, h2 {
+  font-family: serif;
+  font-weight: normal;
+  margin: 0;
+  border-bottom: 1px solid #aaa;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 28.8px;
+  font-weight: bold;
+}
+
 .main-container {
-  background: yellow;
   order: 1;
   width: 100%;
 }
 
 .main-sidebar {
-  background: aqua;
   order: 0;
   width: 176px;
   flex: 0 0 auto;
 }
 
 .main-header {
-  background: #f9f9f9;
   height: 100px;
   width: 100%;
   position: relative;
@@ -44,7 +56,7 @@ nav, .search input {
 }
 
 .edit-menu {
-  right: 310px;
+  right: 320px;
   bottom: 0;
 }
 
@@ -84,13 +96,25 @@ nav, .search input {
   width: 270px;
 }
 
-main {
+.main-content {
   background: white;
+  border: 1px solid #a7d7f9;
+  border-right: none;
+  box-sizing: border-box;
+  padding: 16px;
   width: 100%;
 }
 
 .main-footer {
-  background: red;
   height: 150px;
   width: 100%;
+}
+
+.logo {
+  background: url(../images/enwiki.png);
+  color: transparent;
+  display: block;
+  height: 155px;
+  width: 135px;
+  margin: 6px auto 0;
 }
