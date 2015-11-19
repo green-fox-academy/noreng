@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>GreenFoxpedia</title>
+    <title>GreenFoxpedia - Create account</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/form.css">
   </head>
@@ -58,35 +58,54 @@
       </header>
       <main class="main-content">
         <h1>Create account</h1>
-        <form action="">
-          <p>
-            <label for="username">Username
-              <span class="help-link">
-                (
-                <a href="#">
-                  help me choose
-                </a>
-                )
-              </span>
-            </label>
-            <input type="text" id=username placeholder="Enter your username">
-          </p>
-          <p>
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter a password">
-          </p>
-          <p>
-            <label for="confirm-password">Confirm password</label>
-            <input type="password" id="confirm-password" placeholder="Enter password again">
-          </p>
-          <p>
-            <label for="email">Email address (optional)</label>
-            <input type="email" id="email" placeholder="Enter your email address">
-          </p>
-          <p>
-            <button type="submit">Create your account</button>
-          </p>
-        </form>
+        <div class="registration-form box">
+          <form action="">
+            <p>
+              <label for="username">Username
+                <span class="help-link">
+                  (
+                  <a href="#">
+                    help me choose
+                  </a>
+                  )
+                </span>
+              </label>
+              <input type="text" id=username placeholder="Enter your username">
+            </p>
+            <p>
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="Enter a password">
+            </p>
+            <p>
+              <label for="confirm-password">Confirm password</label>
+              <input type="password" id="confirm-password" placeholder="Enter password again">
+            </p>
+            <p>
+              <label for="email">Email address (optional)</label>
+              <input type="email" id="email" placeholder="Enter your email address">
+            </p>
+            <p>
+              <button type="submit">Create your account</button>
+            </p>
+          </form>
+        </div>
+        <div class="statistics box">
+          <h2>Wikipedia is made by people like you.</h2>
+          <div class="stat-numbers img-edits">
+            <h3>800,190,021</h3>
+            <p>edits</p>
+          </div>
+          <div class="stat-numbers img-articles">
+            <div>
+              <h3>5,013,143</h3>
+              <p>articles</p>
+            </div>
+          </div>
+          <div class="stat-numbers img-contributors">
+            <h3>128,730</h3>
+            <p>recent contributors</p>
+          </div>
+        </div>
       </main>
       <footer class="main-footer"></footer>
     </div>

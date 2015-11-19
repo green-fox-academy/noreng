@@ -10,9 +10,8 @@ body {
   min-height: 100vh;
 }
 
-h1, h2 {
-  border-bottom: 1px solid #aaa;
-  font-family: serif;
+h1, h2, h3 {
+  font-family: Georgia, serif;
   font-weight: normal;
   margin: 0;
   overflow: hidden;
@@ -20,7 +19,7 @@ h1, h2 {
 
 h1 {
   font-size: 28px;
-  font-weight: bold;
+  border-bottom: 1px solid #aaa;
 }
 
 a {
@@ -167,17 +166,6 @@ input[type="search"]::-webkit-search-cancel-button {
   top: -2px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .biography{
   background: #f9f9f9;
   box-sizing: border-box;
@@ -193,7 +181,7 @@ input[type="search"]::-webkit-search-cancel-button {
   border: 1px solid #a7d7f9;
   border-right: none;
   box-sizing: border-box;
-  padding: 16px;
+  padding: 25px;
   width: 100%;
 }
 

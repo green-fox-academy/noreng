@@ -1,3 +1,17 @@
+.box {
+  float: left;
+}
+
+.main-content::after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.registration-form {
+  margin-right: 100px;
+}
+
 form p {
   display: flex;
   flex-direction: column;
@@ -59,4 +73,38 @@ form button {
 
 form button:hover {
   background-color: #008c6d;
+}
+
+.statistics {
+  box-sizing: border-box;
+  text-align: center;
+  width: 405px;
+}
+
+.stat-numbers {
+ padding: 0px 0px 0px 90px;
+}
+
+.img-edits {
+  background: url(../images/icon-edits.png) no-repeat center left;
+}
+
+.img-articles {
+  background: url(../images/icon-pages.png) no-repeat center left;
+}
+
+.img-contributors {
+  background: url(../images/icon-contributors.png) no-repeat center left;
+}
+
+.statistics h2 {
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  margin-top: 32px;
+}
+
+.stat-numbers h3 {
+  font-size: 36px;
+  margin-top: 32px;
 }
