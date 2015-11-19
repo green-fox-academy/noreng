@@ -11,29 +11,50 @@
       <header class="main-header">
         <nav class="user-menu">
           <ul>
-            <li>Create account</li>
-            <li>Not logged in</li>
-            <li>Talk</li>
-            <li>Contributions</li>
-            <li>Log in</li>
+            <li>
+              <a href="#">Create account</a>
+            </li>
+            <li class="user-status">Not logged in</li>
+            <li>
+              <a href="#">Talk</a>
+            </li>
+            <li>
+              <a href="#">Contributions</a>
+            </li>
+            <li>
+              <a href="#">Log in</a>
+            </li>
           </ul>
         </nav>
-        <nav class="talk-menu">
+        <nav class="talk-menu tab">
           <ul>
-            <li>Article</li>
-            <li>Talk</li>
+            <li class="active-tab">
+              <a href="#">Article</a>
+            </li>
+            <li>
+              <a href="#">Talk</a>
+            </li>
           </ul>
         </nav>
-        <nav class="edit-menu">
+        <nav class="edit-menu tab">
           <ul>
-            <li>Read</li>
-            <li>Edit</li>
-            <li>View history</li>
+            <li class="active-tab">
+              <a href="#">Read</a>
+            </li>
+            <li>
+              <a href="#">Edit</a>
+            </li>
+            <li>
+              <a href="#">View history</a>
+            </li>
           </ul>
         </nav>
-        <form class="search">
-          <input type="text" placeholder="Search" pattern="^[A-Za-z ]+$">
-        </form>
+        <div class="search-container">
+          <form class="search-form">
+            <input type="text" class="search-input" placeholder="Search" pattern="^[A-Za-z ]+$">
+            <input type="submit" class="search-button" value="">
+          </form>
+        </div>
       </header>
       <main class="main-content">
         <h1>Create account</h1>
