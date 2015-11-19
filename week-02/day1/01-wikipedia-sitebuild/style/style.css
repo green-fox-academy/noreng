@@ -15,11 +15,44 @@ h1, h2, h3 {
   font-weight: normal;
   margin: 0;
   overflow: hidden;
+  line-height: 1.3em;
 }
 
 h1 {
   font-size: 28px;
   border-bottom: 1px solid #aaa;
+  margin-bottom: 5px;
+}
+
+h2 {
+  border-bottom: 1px solid #aaa;
+}
+
+.subtitle {
+  font-size: 13px;
+}
+
+.warning {
+  text-indent: 22px;
+}
+
+.ref {
+  vertical-align: super;
+  font-size: .8em;
+  line-height: 0;
+}
+
+.edit-link {
+  font-size: 13px;
+  margin-left: 10px;
+}
+
+.edit-link::before {
+  content: '[ '
+}
+
+.edit-link::after {
+  content: ' ]'
 }
 
 a {
@@ -181,8 +214,14 @@ input[type="search"]::-webkit-search-cancel-button {
   border: 1px solid #a7d7f9;
   border-right: none;
   box-sizing: border-box;
-  padding: 25px;
+  color: #252525;
+  font-size: 14px;
+  line-height: 1.6em;
+  padding: 18px;
   width: 100%;
+}
+
+.main-content p {
 }
 
 .main-footer {
