@@ -26,6 +26,13 @@ h1 {
 
 h2 {
   border-bottom: 1px solid #aaa;
+  margin-top: 22px;
+}
+
+h3 {
+  font-family: sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 .subtitle {
@@ -44,6 +51,7 @@ h2 {
 
 .edit-link {
   font-family: sans-serif;
+  font-weight: normal;
   font-size: 13px;
   margin-left: 10px;
 }
