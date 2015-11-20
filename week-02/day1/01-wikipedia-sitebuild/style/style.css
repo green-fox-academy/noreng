@@ -77,6 +77,41 @@ a:visited {
   color: #0b0080;
 }
 
+.toc {
+  background-color: #F9F9F9;
+  border: 1px solid #AAAAAA;
+  box-sizing: border-box;
+  width: 120px;
+  padding: 5px;
+}
+
+.toc-header {
+  border: none;
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.toc-ol {
+  counter-reset: section;
+  font-size: 13px;
+  list-style-type: none;
+  margin:0;
+  padding: 0px;
+}
+
+.toc-ol > li > ol {
+  margin-left: 25px;
+}
+
+.toc-a::before {
+  text-align: left;
+  margin-right: 3px;
+  counter-increment: section;
+  content: counters(section,".") " ";
+}
+
 input[type="search"] {
   -webkit-appearance: textfield;
 }
