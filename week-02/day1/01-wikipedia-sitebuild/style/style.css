@@ -325,6 +325,31 @@ dl dd {
   width: 100%;
 }
 
+.category-menu {
+  display: flex;
+  background: #F9F9F9;
+  border: 1px solid #aaa;
+}
+
+.category-menu ul {
+  display: flex;
+  list-style: none;
+  padding-left: 5px;
+  margin: 5px 0px;
+}
+
+.category-menu li {
+  flex-direction: row;
+}
+
+.category-menu li + li {
+  border-left: 1px solid #aaa;
+}
+
+.category-menu a {
+  padding: 2px 7px;
+}
+
 .main-footer {
   height: 150px;
   width: 100%;
