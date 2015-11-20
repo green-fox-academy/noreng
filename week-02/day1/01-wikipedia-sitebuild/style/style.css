@@ -101,7 +101,7 @@ a:visited {
   padding: 0px;
 }
 
-.toc-ol > li > ol {
+.toc-ol li ol {
   margin-left: 25px;
 }
 
@@ -325,6 +325,42 @@ dl dd {
   width: 100%;
 }
 
+.article ul {
+  padding-left: 5px;
+}
+
+.article ul li {
+  list-style: none;
+  margin-left: 25px;
+}
+
+.article ul li:before {
+  content:'\2022';
+  color: red;
+  display: block;
+  font-size: 20px;
+  left: -15px;
+  max-width: 0px;
+  max-height: 0px;
+  position: relative;
+  top: 0;
+}
+
+.article-columns {
+  -webkit-columns: 3 250px;
+  -moz-columns: 3 200px;
+  columns: 4 200px;
+  -webkit-column-gap: 4em;
+  -moz-column-gap: 4em;
+  column-gap: 4em;
+}
+
+.article-columns li {
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  column-break-inside: avoid;
+}
+
 .category-menu {
   display: flex;
   background: #F9F9F9;
@@ -351,8 +387,23 @@ dl dd {
 }
 
 .main-footer {
+  box-sizing: border-box;
+  color: #333;
+  font-size: 11px;
   height: 150px;
   width: 100%;
+  padding: 10px;
+}
+
+.main-footer ul {
+  display: flex;
+  list-style: none;
+  padding-left: 0px;
+}
+
+.main-footer li {
+  flex-direction: row;
+  padding: 5px 15px 5px 0px
 }
 
 .logo {

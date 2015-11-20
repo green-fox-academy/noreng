@@ -105,6 +105,7 @@ form button:hover {
 }
 
 .stat-numbers h3 {
+  font-family: Georgia;
   font-size: 36px;
   margin-top: 32px;
 }
