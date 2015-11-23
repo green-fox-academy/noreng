@@ -1,12 +1,13 @@
-n=0
-while n < 100:
-    if n % 3 == 0:
-        if n % 5 == 0:
-            print('fizzbuzz')
-        else:
+number=0
+while number < 100:
+    n = str(number)
+    if '3' in n or '5' in n:
+        if ('3' in n) == False:
+            print('buzz')
+        elif ('5' in n) == False:
             print('fizz')
-    elif n % 5 == 0:
-        print('buzz')
+        else:
+            print('fizzbuzz')
     else:
         print(n)
-    n += 1
+    number += 1
