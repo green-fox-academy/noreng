@@ -1,17 +1,16 @@
-def is_fizz(number):
-    return number % 3 == 0 or '3' in str(number)
-
-def is_buzz(number):
-    return number % 5 == 0 or '5' in str(number)
+def is_fizzish(number, base):
+    return number % base == 0 or str(base) in str(number)
 
 def fizz_buzz(min, max = 100):
+    fizz_number = 3
+    buzz_number = 5
     n = min
     while n <= max:
-        if is_buzz(n) and is_fizz(n):
+        if is_fizzish(n, fizz_number) and is_fizzish(n, buzz_number):
             print('fizzbuzz')
-        elif is_buzz(n):
+        elif is_fizzish(n, buzz_number):
             print('buzz')
-        elif is_fizz(n):
+        elif is_fizzish(n, fizz_number):
             print('fizz')
         else:
             print(n)
