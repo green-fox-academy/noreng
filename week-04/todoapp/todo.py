@@ -2,7 +2,7 @@ from operations import *
 
 def main():
     database = read_db('database/database.txt')
-    print_todo_list(database)
+    pretty_print(database)
 
     while True:
         show_menu()

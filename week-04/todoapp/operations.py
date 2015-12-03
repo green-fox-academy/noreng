@@ -19,16 +19,15 @@ def show_menu():
 
 def add_task(database):
     while True:
+        pretty_print(database)
         userInput = input('\nNew task to do:\n')
         if userInput == '':
             break
         database.append(Task(userInput))
-        print(database)
-        print_todo_list(database)
 
 def remove_task(database):
     while True:
-        print_todo_list(database)
+        pretty_print(database)
         userInput = input('\nNumber of task to delete:\n')
         if userInput == '':
             break
@@ -37,7 +36,7 @@ def remove_task(database):
 
 def complete_task(database):
     while True:
-        print_todo_list(database)
+        pretty_print(database)
         userInput = input('\nNumber of completed task:\n')
         if userInput == '':
             break
@@ -51,11 +50,14 @@ def raw_text_to_list(text):
 def list_to_raw_text(list_):
     return "\n".join(str(i) for i in list_)
 
-def print_todo_list(list_):
+def pretty_print(list_):
     print('\nTO DO LIST\n')
-    nasd = []
+    if len(list_) == 0:
+        print('\n-- Nothing to do --\n')
+
+    pretty_list = []
     i = 0
-    for item in list_:
+    for task in list_:
         i += 1
-        nasd.append(str(i) + '. ' + str(item))
-    print("\n".join(str(i) for i in nasd))
+        pretty_list.append(str(i) + '.\t' + str(task))
+    print(("\n".join(str(i) for i in pretty_list)).expandtabs(2))
