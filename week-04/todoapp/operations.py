@@ -1,3 +1,5 @@
+from item import Task
+
 def read_db(path):
     db = open(path, "r")
     raw_content = db.read()
@@ -12,15 +14,16 @@ def save_to_db(database, path):
     db.close()
 
 def show_menu():
-    print('\nMENU')
-    print('0 = exit\n1 = add\n2 = complete\n3 = remove\n')
+    print('\nMENU\n')
+    print('1 = add new task\n2 = complete task\n3 = remove task\n\n0 = exit\n')
 
 def add_task(database):
     while True:
         userInput = input('\nNew task to do:\n')
         if userInput == '':
             break
-        database.append('[ ] ' + userInput)
+        database.append(Task(userInput))
+        print(database)
         print_todo_list(database)
 
 def remove_task(database):
@@ -32,15 +35,14 @@ def remove_task(database):
         i = int(userInput) - 1
         del database[i]
 
-
 def complete_task(database):
     while True:
+        print_todo_list(database)
         userInput = input('\nNumber of completed task:\n')
         if userInput == '':
             break
         i = int(userInput) - 1
-        database[i] = database[i][:1] + 'X' + database[i][2:]
-        print_todo_list(database)
+        database[i].set_completed(True)
 
 def raw_text_to_list(text):
     list_ = text.split('\n')
@@ -55,5 +57,5 @@ def print_todo_list(list_):
     i = 0
     for item in list_:
         i += 1
-        nasd.append(str(i) + '. ' + item)
+        nasd.append(str(i) + '. ' + str(item))
     print("\n".join(str(i) for i in nasd))
