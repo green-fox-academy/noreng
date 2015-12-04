@@ -5,6 +5,7 @@ def read_db(path):
     raw_content = db.read()
     db.close()
     database = raw_text_to_list(raw_content)
+    database = [convert_to_object(row) for row in database]
     return database
 
 def save_to_db(database, path):
@@ -14,8 +15,7 @@ def save_to_db(database, path):
     db.close()
 
 def show_menu():
-    print('\nMENU\n')
-    print('1 = add new task\n2 = complete task\n3 = remove task\n\n0 = exit\n')
+    print('\nMENU\n1 = add new task\n2 = complete task\n3 = remove task\n\n0 = exit\n')
 
 def add_task(database):
     while True:
@@ -29,19 +29,29 @@ def remove_task(database):
     while True:
         pretty_print(database)
         userInput = input('\nNumber of task to delete:\n')
-        if userInput == '':
-            break
-        i = int(userInput) - 1
-        del database[i]
+        try:
+            if userInput == '':
+                break
+            i = int(userInput) - 1
+            del database[i]
+        except ValueError:
+            print('Number, please')
+        except IndexError:
+            print('Wrong number')
 
 def complete_task(database):
     while True:
         pretty_print(database)
         userInput = input('\nNumber of completed task:\n')
-        if userInput == '':
-            break
-        i = int(userInput) - 1
-        database[i].set_completed(True)
+        try:
+            if userInput == '':
+                break
+            i = int(userInput) - 1
+            database[i].set_completed(True)
+        except ValueError:
+            print('Number, please')
+        except IndexError:
+            print('Wrong number')
 
 def raw_text_to_list(text):
     list_ = text.split('\n')
@@ -49,6 +59,16 @@ def raw_text_to_list(text):
 
 def list_to_raw_text(list_):
     return "\n".join(str(i) for i in list_)
+
+def convert_to_object(text):
+    status = text[:3]
+    description = text[4:]
+
+    if status == '[x]':
+        status = True
+    else:
+        status = False
+    return Task(description, status)
 
 def pretty_print(list_):
     print('\nTO DO LIST\n')
