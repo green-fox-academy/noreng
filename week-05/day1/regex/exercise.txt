@@ -1,0 +1,8 @@
+1. 'alma' --> '(alma)'
+cat test.txt | sed -r "s/(alma)/\(\1\)/gi"
+
+2. Numbers, numbers % 3 == 0
+[1|4|7][2|5|8]|[2|5|8][1|4|7]|[3|6|9][0|3|6|9]
+
+3. e-mail address:
+[\w\.-]+@[\w\.-]+\.[A-Za-z]{2,4}
