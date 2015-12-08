@@ -74,10 +74,13 @@ def pretty_print(list_):
     print('\nTO DO LIST\n')
     if len(list_) == 0:
         print('\n-- Nothing to do --\n')
+    else:
+        print(pretty_format(list_))
 
-    pretty_list = []
+def pretty_format(list_):
+    pretty = []
     i = 0
     for task in list_:
         i += 1
-        pretty_list.append(str(i) + '.\t' + str(task))
-    print(("\n".join(str(i) for i in pretty_list)).expandtabs(2))
+        pretty.append(str(i) + '.\t' + str(task))
+    return ("\n".join(str(item) for item in pretty)).expandtabs(2)
