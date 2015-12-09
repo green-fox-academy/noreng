@@ -11,3 +11,7 @@ class Task:
 
     def set_completed(self, status):
         self.completed = status
+
+    def from_text(self, text):
+        self.completed = text[:3] == "[x]"
+        self.description = text[4:]

@@ -61,14 +61,9 @@ def list_to_raw_text(list_):
     return "\n".join(str(i) for i in list_)
 
 def convert_to_object(text):
-    status = text[:3]
-    description = text[4:]
-
-    if status == '[x]':
-        status = True
-    else:
-        status = False
-    return Task(description, status)
+    new_task = Task('')
+    new_task.from_text(text)
+    return new_task
 
 def pretty_print(list_):
     print('\nTO DO LIST\n')
