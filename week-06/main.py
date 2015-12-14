@@ -1,7 +1,7 @@
-from menu import MenuItem, Menu, menu_items
+from menu import MenuItem, Menu, create_main_menu
 
 def main():
-    menu = menu_items()
+    menu = create_main_menu()
 
     while True:
         menu.pretty_print()
@@ -11,7 +11,7 @@ def main():
         if result == 'exit':
             print('exit')
             break
-            
+
         elif result.success == False:
             print(result.text)
 
