@@ -28,9 +28,9 @@ class TestMenu(unittest.TestCase):
 
     def test_select_menu_item(self):
         menu = create_main_menu()
-        self.assertEqual(str(menu.select_item('0')), 'exit')
-        self.assertEqual(str(menu.select_item('1')), 'Not yet implemented')
-        self.assertEqual(str(menu.select_item('2')), 'Not yet implemented')
+        self.assertEqual(menu.select_item('0'), 'exit')
+        self.assertEqual(menu.select_item('1'), 'Not yet implemented')
+        self.assertEqual(menu.select_item('2'), 'Not yet implemented')
         self.assertEqual(str(menu.select_item('8')), 'Wrong input')
         self.assertEqual(str(menu.select_item('abc')), 'Wrong input')
 

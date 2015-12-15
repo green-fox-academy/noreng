@@ -13,7 +13,4 @@ def main():
             print('exit')
             break
 
-        elif result.success == False:
-            print(result.text)
-
 main()

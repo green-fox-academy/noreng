@@ -4,6 +4,10 @@ class Result:
         self.text = text
 
     def __repr__(self):
-        if self.success == None:
-            return 'Not yet implemented'
         return self.text
+
+def not_yet_implemented():
+    return 'Not yet implemented'
+
+def exit():
+    return 'exit'

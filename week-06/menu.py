@@ -1,10 +1,10 @@
 import commands
 
 class MenuItem:
-    def __init__(self, id, text, command = None):
+    def __init__(self, id, text, action = None):
         self.id = id
         self.text = text
-        self.command = command
+        self.action = action
 
     def __repr__(self):
         return '{} {}'.format(self.id, self.text)
@@ -22,5 +22,5 @@ class Menu:
     def select_item(self, choice):
         for item in self.items:
           if item.id == choice:
-            return item.command
+            return item.action()
         return commands.Result(success = False, text = 'Wrong input')

@@ -1,6 +1,5 @@
 import unittest
 from menuitems import create_main_menu
-# from menu import Menu, MenuItem
 
 class TestMainMenuCreator(unittest.TestCase):
     def test_existence(self):
