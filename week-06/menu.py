@@ -1,4 +1,4 @@
-import commands
+import commands as cmd
 
 class MenuItem:
     def __init__(self, id, text, action = None):
@@ -19,21 +19,11 @@ class Menu:
     def get_menu(self):
         return "\n".join(str(item) for item in self.items)
 
-    def select_item(self, choice):
+    def select_item(self, choice, store):
         for item in self.items:
           if item.id == choice:
-            return item.action()
-        return commands.Result(success = False, text = '{} is wrong input'.format(choice))
-
-    def display(self):
-        while True:
-            self.show()
-            action = self.select_item(self.ask_player())
-            if action.success == False:
-                print(action.text)
-            elif action.success == None:
-                print('exit')
-                break
+            return item.action(store)
+        return cmd.Result(success = False, text = '{} is wrong input'.format(choice))
 
     def ask_player(self):
         return input('Choose an option: ')

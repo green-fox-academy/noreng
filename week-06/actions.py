@@ -1,21 +1,18 @@
-# from menu import *
-from menuitems import create_menu, menuitems
-from player import *
+from menuitems import Menus
+import commands as cmd
 
-def main_menu():
-    menu = create_menu(menuitems()['main'])
-    menu.display()
+def main_menu(game):
+    game.set_next_menu(Menus().main())
+    return cmd.Result(True)
 
-def new_game():
-    player = Player()
-    player.ask_player_name()
-    player.display_name()
-    menu = create_menu(menuitems()['new_game'])
-    menu.display()
+def new_game(game):
+    game.player.add_name()
+    game.set_next_menu(Menus().new_game())
+    return cmd.Result(True)
 
-def reenter_name():
-    player = Player()
-    player.ask_player_name()
-    player.display_name()
-    menu = create_menu(menuitems()['new_game'])
-    menu.display()
+def exit_from_game(game):
+    return cmd.Result('Exit')
+
+def reenter_name(game):
+    game.player.change_name()
+    return cmd.Result(True)

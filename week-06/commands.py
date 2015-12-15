@@ -7,10 +7,6 @@ class Result:
         return self.text
 
 class Not_Implemented:
-    def __init__(self):
+    def __init__(self, store):
         self.success = False
         self.text = 'Not yet implemented'
-
-class Exit:
-    def __init__(self):
-        self.success  = None

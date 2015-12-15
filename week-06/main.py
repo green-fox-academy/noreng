@@ -1,8 +1,21 @@
-# from menuitems import *
-import actions as actions
+import actions
+from game import Game
 
 def main():
+    game = Game()
 
-    actions.main_menu()
+    while True:
+        menu = game.current_menu
+        menu.show()
+        
+        choice = menu.ask_player()
+        action = menu.select_item(choice, game)
+
+        if action.success == False:
+            print(action.text)
+
+        elif action.success == 'Exit':
+            print('Goodbye!')
+            break
 
 main()
