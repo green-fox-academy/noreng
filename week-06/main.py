@@ -1,8 +1,8 @@
-from menuitems import *
+# from menuitems import *
+import actions as actions
 
 def main():
 
-    menu = create_menu(menuitems['main'])
-    menu.display()
+    actions.main_menu()
 
 main()
