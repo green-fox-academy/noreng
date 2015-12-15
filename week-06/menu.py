@@ -13,7 +13,7 @@ class Menu:
     def __init__(self, items):
         self.items = items
 
-    def pretty_print(self):
+    def show(self):
         print(self.get_menu())
 
     def get_menu(self):
@@ -23,4 +23,17 @@ class Menu:
         for item in self.items:
           if item.id == choice:
             return item.action()
-        return commands.Result(success = False, text = 'Wrong input')
+        return commands.Result(success = False, text = '{} is wrong input'.format(choice))
+
+    def display(self):
+        while True:
+            self.show()
+            action = self.select_item(self.ask_player())
+            if action.success == False:
+                print(action.text)
+            elif action.success == None:
+                print('exit')
+                break
+
+    def ask_player(self):
+        return input('Choose an option: ')

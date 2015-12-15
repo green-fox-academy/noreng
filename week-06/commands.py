@@ -6,8 +6,11 @@ class Result:
     def __repr__(self):
         return self.text
 
-def not_yet_implemented():
-    return 'Not yet implemented'
+class Not_Implemented:
+    def __init__(self):
+        self.success = False
+        self.text = 'Not yet implemented'
 
-def exit():
-    return 'exit'
+class Exit:
+    def __init__(self):
+        self.success  = None
