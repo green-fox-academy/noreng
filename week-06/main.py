@@ -1,4 +1,5 @@
-from menu import MenuItem, Menu, create_main_menu
+from menu import MenuItem, Menu
+from menuitems import create_main_menu
 
 def main():
     menu = create_main_menu()
