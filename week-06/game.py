@@ -64,7 +64,8 @@ class Player:
         return randint(1,6)
 
     def set_extra_potion(self, potion):
-        self.extra_potion = 'health'
+        self.extra_potion = potion
+        self.inventory[2] = potion
 
     def use_extra_potion(self):
         self.stats[self.extra_potion] = self.stats_start[self.extra_potion]
