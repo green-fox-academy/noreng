@@ -13,7 +13,7 @@ class Menu:
     def __init__(self, items):
         self.items = items
 
-    def show(self):
+    def display(self):
         print(self.get_menu())
 
     def get_menu(self):

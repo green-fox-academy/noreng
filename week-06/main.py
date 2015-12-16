@@ -6,8 +6,8 @@ def main():
 
     while True:
         menu = game.current_menu
-        menu.show()
-        
+        menu.display()
+
         choice = menu.ask_player()
         action = menu.select_item(choice, game)
 

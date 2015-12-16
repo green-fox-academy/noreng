@@ -1,4 +1,4 @@
-from menuitems import Menus
+from actions import *
 
 class Game:
     def __init__(self):
@@ -10,7 +10,7 @@ class Game:
         self.current_menu.show()
 
     def set_next_menu(self, next_menu):
-        self.current_menu = next_menu
+        self.current_menu = next_menu()
 
 class Player:
     def __init__(self):
