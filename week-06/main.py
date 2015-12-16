@@ -1,4 +1,3 @@
-import actions
 from game import Game
 
 def main():
