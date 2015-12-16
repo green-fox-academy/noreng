@@ -8,7 +8,7 @@ class MenuItem:
         self.extra_arg = extra_arg
 
     def __repr__(self):
-        return '{} {}'.format(self.id, self.text)
+        return '{} > {}'.format(self.id, self.text)
 
 class Menu:
     def __init__(self, items):

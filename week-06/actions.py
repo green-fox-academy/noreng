@@ -12,7 +12,7 @@ def new_game(game):
     return cmd.Result(True)
 
 def exit_from_game(game):
-    return cmd.Result('Exit')
+    game.exit = True
 
 def reenter_name(game):
     game.player.change_name()
@@ -21,7 +21,7 @@ def reenter_name(game):
 def roll_stats(game):
     game.player.set_basic_stats()
     game.set_menu(menus.roll_stats)
-    game.player.display()
+    game.player.display_stats()
     return cmd.Result(True)
 
 def select_potion(game):
@@ -29,9 +29,16 @@ def select_potion(game):
     return cmd.Result(True)
 
 def selected_potion(game, potion):
-    print('Your chosen potion is: ' + str(potion))
     game.player.set_extra_potion(potion)
+    print('Your chosen potion is: ' + str(game.player.extra_potion))
     game.set_menu(menus.choosed_potion)
+    return cmd.Result(True)
+
+def display_player_stats(game):
+    print('Here is your character:')
+    game.player.display_stats()
+    game.player.display_inventory()
+    game.set_menu(menus.begin)
     return cmd.Result(True)
 
 class Menus:
@@ -76,7 +83,7 @@ class Menus:
     def choosed_potion(self):
         return Menu([
             MenuItem('1', 'Reselect the Potion', select_potion),
-            MenuItem('2', 'Continue -> Begin', cmd.Not_Implemented),
+            MenuItem('2', 'Continue -> Begin', display_player_stats),
             MenuItem('0', 'Quit', cmd.Not_Implemented),
             ])
 

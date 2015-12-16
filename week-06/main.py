@@ -10,11 +10,11 @@ def main():
         choice = menu.ask_player()
         action = menu.select_item(choice, game)
 
-        if action.success == False:
-            print(action.text)
-
-        elif action.success == 'Exit':
+        if game.exit:
             print('Goodbye!')
             break
+
+        if action.success == False:
+            print(action.text)
 
 main()
