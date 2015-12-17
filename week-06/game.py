@@ -6,25 +6,29 @@ class Game:
     def __init__(self):
         self.action = None
         self.action_arg = None
+        self.prev_action = None
         self.menu = None
         self.player = Player()
         self.continue_ = True
 
     def execute_action(self):
         if not self.action:
-            self.action = main_menu
+            self.action = show_main_menu
         return self.action(self)
 
     def set_next_action(self, action, arg = None):
         self.action = action
         self.action_arg = arg
 
-    def get_action_arg(self):
-        return self.action_arg
-
     def set_action_from_menu(self, text):
         choice = self.ask('\n' + text)
         self.menu.select_item(choice, self)
+
+    def resume_action(self):
+        self.action = self.prev_action
+
+    def get_action_arg(self):
+        return self.action_arg
 
     def title(self, text):
         print('\n' + text + '\n')

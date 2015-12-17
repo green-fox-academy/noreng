@@ -23,4 +23,5 @@ class Menu:
     def select_item(self, choice, game):
         for item in self.items:
             if item.id == choice:
-                return game.set_next_action(item.action, item.extra_arg)
+                game.prev_action = game.action
+                game.set_next_action(item.action, item.extra_arg)
