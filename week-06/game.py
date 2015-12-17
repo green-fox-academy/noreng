@@ -1,15 +1,41 @@
 from actions import *
 from random import randint
-import time
+import os
 
 class Game:
     def __init__(self):
+        self.action = None
+        self.menu = None
         self.player = Player()
-        self.current_menu = Menus().main()
-        self.exit = False
+        self.continue_ = True
 
-    def set_menu(self, next_menu):
-        self.current_menu = next_menu()
+    def execute_action(self):
+        if not self.action:
+            self.action = main_menu
+        return self.action(self)
+
+    def set_next_action(self, action):
+        self.action = action
+
+    def set_action_from_menu(self, text):
+        choice = self.ask('\n' + text)
+        self.menu.select_item(choice, self)
+
+    def title(self, text):
+        print('\n' + text + '\n')
+
+    def clear_display(self):
+        os.system('cls' if os.name=='nt' else 'clear')
+
+    def display_menu(self, menu):
+        self.menu = menu()
+        self.menu.display()
+
+    def ask(self, text):
+        return input(text)
+
+    def exit(self):
+        self.continue_ = False
 
 class Player:
     def __init__(self):
@@ -33,25 +59,21 @@ class Player:
 
     def add_name(self):
         self.name = self.ask_player('What\'s your name? ')
-        self.display_greet()
 
     def greet(self):
         return 'Hi ' + self.name + '!'
 
     def display_greet(self):
-        print(self.greet())
+        print('\n' + self.greet() + '\n')
 
     def change_name(self):
         message = 'Change your current name ({}) to: '.format(self.name)
         self.name = self.ask_player(message)
-        self.display_greet()
 
     def ask_player(self, text):
         return input(text)
 
     def set_basic_stats(self):
-        print('Rolling...')
-        time.sleep(0.5)
         self.stats['dexterity'] = self.roll_dice() + 6
         self.stats['health'] = self.roll_dice() + self.roll_dice() + 12
         self.stats['luck'] = self.roll_dice() + 6

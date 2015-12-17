@@ -1,20 +1,13 @@
 from game import Game
+import os
 
 def main():
     game = Game()
 
-    while True:
-        menu = game.current_menu
-        menu.display()
+    while game.continue_:
+        game.clear_display()
+        game.execute_action()
 
-        choice = menu.ask_player()
-        action = menu.select_item(choice, game)
-
-        if game.exit:
-            print('Goodbye!')
-            break
-
-        if action.success == False:
-            print(action.text)
+    print('Goodbye!')
 
 main()
