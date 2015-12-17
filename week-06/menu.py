@@ -1,5 +1,3 @@
-import commands as cmd
-
 class MenuItem:
     def __init__(self, id, text, action = None, extra_arg = None):
         self.id = id
@@ -24,4 +22,5 @@ class Menu:
         for item in self.items:
             if item.id == choice:
                 game.prev_action = game.action
-                game.set_next_action(item.action, item.extra_arg)
+                return game.set_next_action(item.action, item.extra_arg)
+        return game.set_error("'{}' is wrong input".format(choice))

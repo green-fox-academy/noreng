@@ -5,6 +5,8 @@ def main():
 
     while game.continue_:
         game.clear_display()
+
+        game.display_errors_and_messages()
         game.execute_action()
 
     print('Goodbye!')

@@ -10,8 +10,12 @@ class Game:
         self.menu = None
         self.player = Player()
         self.continue_ = True
+        self.error = None
+        self.message = None
 
     def execute_action(self):
+        self.message = None
+        self.error = None
         if not self.action:
             self.action = show_main_menu
         return self.action(self)
@@ -32,6 +36,16 @@ class Game:
 
     def title(self, text):
         print('\n' + text + '\n')
+
+    def set_error(self, message):
+        self.error = message
+
+    def set_message(self, message):
+        self.message = message
+
+    def display_errors_and_messages(self):
+        print("// Error: {}".format(self.error)) if self.error else None
+        print("// {}".format(self.message)) if self.message else None
 
     def clear_display(self):
         os.system('cls' if os.name=='nt' else 'clear')

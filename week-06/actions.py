@@ -1,6 +1,9 @@
-import commands as cmd
 from menu import *
 import time
+
+def not_implemented(game):
+    game.set_message('Sorry, not yet implemented')
+    return game.resume_action()
 
 def show_main_menu(game):
     game.title('Welcome!')
@@ -27,6 +30,7 @@ def show_exit_menu(game):
     confirm = input('Press \'q\' to confirm: ')
     if confirm == 'q':
         return game.exit()
+    game.set_message('Cancelled')
     return game.resume_action()
 
 def exit_from_game(game):
@@ -72,7 +76,7 @@ class Menus:
     def main(self):
         return Menu([
             MenuItem('1', 'New Game', set_name),
-            MenuItem('2', '(Load Game)', cmd.Not_Implemented),
+            MenuItem('2', '(Load Game)', not_implemented),
             MenuItem('0', 'Quit', show_exit_menu)
             ])
 
@@ -80,23 +84,23 @@ class Menus:
         return Menu([
             MenuItem('1', 'Continue -> Roll Stats', roll_stats),
             MenuItem('2', 'Reenter name', reenter_name),
-            MenuItem('3', '(Save)', cmd.Not_Implemented),
+            MenuItem('3', '(Save)', not_implemented),
             MenuItem('4', 'Back to main menu', show_main_menu),
             MenuItem('0', 'Quit', show_exit_menu)
             ])
 
     def quit(self):
         return Menu([
-            MenuItem('1', '(Save and Quit)', cmd.Not_Implemented),
-            MenuItem('2', '(Quit without Save)', cmd.Not_Implemented),
-            MenuItem('0', '(Resume)', cmd.Not_Implemented),
+            MenuItem('1', '(Save and Quit)', not_implemented),
+            MenuItem('2', '(Quit without Save)', not_implemented),
+            MenuItem('0', '(Resume)', not_implemented),
             ])
 
     def roll_stats(self):
         return Menu([
             MenuItem('1', 'Continue -> Select potion', select_potion),
             MenuItem('2', 'Reroll stats', roll_stats),
-            MenuItem('0', '(Quit)', show_exit_menu),
+            MenuItem('0', 'Quit', show_exit_menu),
             ])
 
     def potion_menu(self):
@@ -110,21 +114,21 @@ class Menus:
         return Menu([
             MenuItem('1', 'Continue -> Begin', display_player_stats),
             MenuItem('2', 'Reselect the Potion', select_potion),
-            MenuItem('0', '(Quit)', show_exit_menu),
+            MenuItem('0', 'Quit', show_exit_menu),
             ])
 
     def begin(self):
         return Menu([
-            MenuItem('1', '(Begin)', cmd.Not_Implemented),
-            MenuItem('2', '(Save)', cmd.Not_Implemented),
-            MenuItem('0', '(Quit)', show_exit_menu),
+            MenuItem('1', '(Begin)', not_implemented),
+            MenuItem('2', '(Save)', not_implemented),
+            MenuItem('0', 'Quit', show_exit_menu),
             ])
 
     def save(self):
         return Menu([
-            MenuItem('1', '(Add new item)', cmd.Not_Implemented),
-            MenuItem('2', '(Resume)', cmd.Not_Implemented),
-            MenuItem('0', '(Quit)', show_exit_menu),
+            MenuItem('1', '(Add new item)', not_implemented),
+            MenuItem('2', '(Resume)', not_implemented),
+            MenuItem('0', 'Quit', show_exit_menu),
             ])
 
 menus = Menus()
