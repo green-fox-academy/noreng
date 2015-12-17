@@ -42,11 +42,11 @@ def resume(game):
 def roll_stats(game):
     game.title('Roll stats...')
     time.sleep(3)
+    game.player.set_basic_stats()
     game.set_next_action(show_stats)
 
 def show_stats(game):
     game.title('Here are your lucky stats:')
-    game.player.set_basic_stats()
     game.player.display_stats()
     game.display_menu(menus.roll_stats)
     game.set_action_from_menu('Choose: ')
