@@ -50,6 +50,16 @@ def select_potion(game):
     game.display_menu(menus.potion_menu)
     game.set_action_from_menu('Choose wisely: ')
 
+def selected_potion(game):
+    potion = game.get_action_arg()
+    game.player.set_extra_potion(potion)
+    game.title('Selected potion: {}'.format(game.player.get_extra_potion()))
+    game.display_menu(menus.choosed_potion)
+    game.set_action_from_menu('You choosed wisely. Change option: ')
+
+def begin(game):
+    pass
+
 class Menus:
     def main(self):
         return Menu([
@@ -97,7 +107,7 @@ class Menus:
     def choosed_potion(self):
         return Menu([
             MenuItem('1', 'Reselect the Potion', select_potion),
-            MenuItem('2', 'Continue -> Begin', display_player_stats),
+            MenuItem('2', 'Continue -> Begin', begin),
             MenuItem('0', '(Quit)', exit_menu),
             ])
 

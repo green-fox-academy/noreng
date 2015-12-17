@@ -5,6 +5,7 @@ import os
 class Game:
     def __init__(self):
         self.action = None
+        self.action_arg = None
         self.menu = None
         self.player = Player()
         self.continue_ = True
@@ -14,8 +15,12 @@ class Game:
             self.action = main_menu
         return self.action(self)
 
-    def set_next_action(self, action):
+    def set_next_action(self, action, arg = None):
         self.action = action
+        self.action_arg = arg
+
+    def get_action_arg(self):
+        return self.action_arg
 
     def set_action_from_menu(self, text):
         choice = self.ask('\n' + text)
@@ -88,6 +93,9 @@ class Player:
     def set_extra_potion(self, potion):
         self.extra_potion = potion
         self.inventory[2] = potion
+
+    def get_extra_potion(self):
+        return self.extra_potion
 
     def use_extra_potion(self):
         self.stats[self.extra_potion] = self.stats_start[self.extra_potion]
