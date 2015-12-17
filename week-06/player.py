@@ -2,11 +2,15 @@ from random import randint
 
 class Player:
     def __init__(self):
-        self.name = ''
+        self.name = None
         self.stats = {'dexterity': 0, 'health': 0, 'luck': 0}
-        self.stats_start = {}
-        self.extra_potion = ''
-        self.inventory = {'weapon': 'Magic Sword', 'armor': 'Supermagic', 'extra potion': self.extra_potion}
+        self.stats_max = self.stats
+        self.extra_potion = None
+        self.inventory = {
+            'weapon': 'Magic Sword',
+            'armor': 'Supermagic',
+            'extra potion': self.extra_potion
+            }
 
     def get_stats(self):
         return self.dictionary_to_string(self.stats)
@@ -21,23 +25,28 @@ class Player:
         print(self.get_inventory() + '\n')
 
     def set_name(self):
-        self.name = self.ask_player('What\'s your name? ')
+        self.name = self.ask('What\'s your name? ')
 
     def get_name(self):
         return self.name
 
-    def greet(self):
-        return 'Hi ' + self.name + '!'
-
-    def display_greet(self):
-        print('\n' + self.greet() + '\n')
-
     def change_name(self):
         message = 'Change your current name ({}) to: '.format(self.name)
-        self.name = self.ask_player(message)
+        self.name = self.ask(message)
 
-    def ask_player(self, text):
-        return input(text)
+    def display_name(self):
+        print('\nCharacter name: {}\n'.format(self.name))
+
+    def display_character_details(self):
+        self.display_name()
+        self.display_stats()
+        self.display_inventory()
+
+    def set_greeting(self):
+        return 'Hi {}!'.format(self.name)
+
+    def display_greeting(self):
+        print('\n{}\n'.format(self.set_greeting()))
 
     def set_basic_stats(self):
         self.stats['dexterity'] = self.roll_dice() + 6
@@ -46,10 +55,7 @@ class Player:
         self.set_max_stats()
 
     def set_max_stats(self):
-        self.stats_start = self.stats
-
-    def roll_dice(self):
-        return randint(1,6)
+        self.stats_max = self.stats
 
     def set_extra_potion(self, potion):
         self.extra_potion = potion
@@ -58,8 +64,11 @@ class Player:
     def get_extra_potion(self):
         return self.extra_potion
 
-    def use_extra_potion(self):
-        self.stats[self.extra_potion] = self.stats_start[self.extra_potion]
+    def roll_dice(self):
+        return randint(1, 6)
+
+    def ask(self, text):
+        return input(text)
 
     def dictionary_to_string(self, dict):
         items = dict.items()

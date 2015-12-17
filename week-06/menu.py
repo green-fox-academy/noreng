@@ -12,11 +12,11 @@ class Menu:
     def __init__(self, items):
         self.items = items
 
-    def display(self):
-        print(self.get_menu())
-
     def get_menu(self):
         return "\n".join(str(item) for item in self.items)
+
+    def display(self):
+        print(self.get_menu())
 
     def select_item(self, choice, game):
         for item in self.items:

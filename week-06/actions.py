@@ -1,10 +1,6 @@
 from menu import *
 import time
 
-def not_implemented(game):
-    game.set_message('Sorry, not yet implemented')
-    return game.resume_action()
-
 def show_main_menu(game):
     game.title('Welcome!')
     game.display_menu(menus.main)
@@ -16,7 +12,7 @@ def set_name(game):
     game.set_next_action(new_game)
 
 def new_game(game):
-    game.player.display_greet()
+    game.player.display_greeting()
     game.display_menu(menus.new_game)
     game.set_action_from_menu('Choose an option: ')
 
@@ -27,7 +23,7 @@ def reenter_name(game):
 
 def show_exit_menu(game):
     game.title('Do you really want to exit?')
-    confirm = input('Press \'q\' to confirm: ')
+    confirm = input("Press 'q' to confirm: ")
     if confirm == 'q':
         return game.exit()
     game.set_message('Cancelled')
@@ -56,21 +52,25 @@ def select_potion(game):
     game.display_menu(menus.potion_menu)
     game.set_action_from_menu('Choose wisely: ')
 
-def selected_potion(game):
+def set_selected_potion(game):
     potion = game.get_action_arg()
     game.player.set_extra_potion(potion)
+    game.set_next_action(show_selected_potion)
+
+def show_selected_potion(game):
     selected_potion = game.player.get_extra_potion()
     game.title('Your selected potion: {}'.format(selected_potion))
     game.display_menu(menus.choosed_potion)
     game.set_action_from_menu('You choosed wisely. Change option: ')
 
 def display_player_stats(game):
-    name = game.player.get_name()
-    game.title('{}, here is your character:'.format(name))
-    game.player.display_stats()
-    game.player.display_inventory()
+    game.player.display_character_details()
     game.display_menu(menus.begin)
     game.set_action_from_menu('Are you ready to start? ')
+
+def not_implemented(game):
+    game.set_message('Sorry, not yet implemented')
+    return game.resume_action()
 
 class Menus:
     def main(self):
@@ -105,9 +105,9 @@ class Menus:
 
     def potion_menu(self):
         return Menu([
-            MenuItem('1', 'Potion of Health', selected_potion, 'health'),
-            MenuItem('2', 'Potion of Dexterity', selected_potion, 'dexterity'),
-            MenuItem('3', 'Potion of Luck', selected_potion, 'luck'),
+            MenuItem('1', 'Potion of Health', set_selected_potion, 'health'),
+            MenuItem('2', 'Potion of Dexterity', set_selected_potion, 'dexterity'),
+            MenuItem('3', 'Potion of Luck', set_selected_potion, 'luck'),
             ])
 
     def choosed_potion(self):
@@ -119,15 +119,8 @@ class Menus:
 
     def begin(self):
         return Menu([
-            MenuItem('1', '(Begin)', not_implemented),
+            MenuItem('1', '(Start)', not_implemented),
             MenuItem('2', '(Save)', not_implemented),
-            MenuItem('0', 'Quit', show_exit_menu),
-            ])
-
-    def save(self):
-        return Menu([
-            MenuItem('1', '(Add new item)', not_implemented),
-            MenuItem('2', '(Resume)', not_implemented),
             MenuItem('0', 'Quit', show_exit_menu),
             ])
 
