@@ -9,7 +9,7 @@ def main_menu(game):
 
 def set_name(game):
     game.title('My name is Norbert')
-    game.player.add_name()
+    game.player.set_name()
     game.set_next_action(new_game)
 
 def new_game(game):
@@ -53,12 +53,17 @@ def select_potion(game):
 def selected_potion(game):
     potion = game.get_action_arg()
     game.player.set_extra_potion(potion)
-    game.title('Selected potion: {}'.format(game.player.get_extra_potion()))
+    selected_potion = game.player.get_extra_potion()
+    game.title('Your selected potion: {}'.format(selected_potion))
     game.display_menu(menus.choosed_potion)
     game.set_action_from_menu('You choosed wisely. Change option: ')
 
-def begin(game):
-    pass
+def display_player_stats(game):
+    name = game.player.get_name()
+    game.title('{}, here is your character:'.format(name))
+    game.player.display_stats()
+    game.display_menu(menus.begin)
+    game.set_action_from_menu('Are you ready to start? ')
 
 class Menus:
     def main(self):
@@ -106,8 +111,8 @@ class Menus:
 
     def choosed_potion(self):
         return Menu([
-            MenuItem('1', 'Reselect the Potion', select_potion),
-            MenuItem('2', 'Continue -> Begin', begin),
+            MenuItem('1', 'Continue -> Begin', display_player_stats),
+            MenuItem('2', 'Reselect the Potion', select_potion),
             MenuItem('0', '(Quit)', exit_menu),
             ])
 

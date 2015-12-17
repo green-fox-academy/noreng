@@ -62,8 +62,11 @@ class Player:
     def display_inventory(self):
         print(self.get_inventory())
 
-    def add_name(self):
+    def set_name(self):
         self.name = self.ask_player('What\'s your name? ')
+
+    def get_name(self):
+        return self.name
 
     def greet(self):
         return 'Hi ' + self.name + '!'
