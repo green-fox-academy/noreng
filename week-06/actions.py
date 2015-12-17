@@ -62,6 +62,7 @@ def display_player_stats(game):
     name = game.player.get_name()
     game.title('{}, here is your character:'.format(name))
     game.player.display_stats()
+    game.player.display_inventory()
     game.display_menu(menus.begin)
     game.set_action_from_menu('Are you ready to start? ')
 

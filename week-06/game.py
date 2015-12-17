@@ -48,19 +48,19 @@ class Player:
         self.stats = {'dexterity': 0, 'health': 0, 'luck': 0}
         self.stats_start = {}
         self.extra_potion = ''
-        self.inventory = ['Sword', 'Leather Armor', self.extra_potion]
+        self.inventory = {'weapon': 'Magic Sword', 'armor': 'Supermagic', 'extra potion': self.extra_potion}
 
     def get_stats(self):
-        return "\n".join(str(key) + ': ' + str(value) for key, value in self.stats.items())
+        return self.dictionary_to_string(self.stats)
 
     def get_inventory(self):
-        return "\n".join(item for item in self.inventory)
+        return self.dictionary_to_string(self.inventory)
 
     def display_stats(self):
-        print(self.get_stats())
+        print(self.get_stats() + '\n')
 
     def display_inventory(self):
-        print(self.get_inventory())
+        print(self.get_inventory() + '\n')
 
     def set_name(self):
         self.name = self.ask_player('What\'s your name? ')
@@ -95,10 +95,14 @@ class Player:
 
     def set_extra_potion(self, potion):
         self.extra_potion = potion
-        self.inventory[2] = potion
+        self.inventory['extra potion'] = potion
 
     def get_extra_potion(self):
         return self.extra_potion
 
     def use_extra_potion(self):
         self.stats[self.extra_potion] = self.stats_start[self.extra_potion]
+
+    def dictionary_to_string(self, dict):
+        items = dict.items()
+        return ", ".join(str(key).capitalize() + ': ' + str(value) for key, value in items)
