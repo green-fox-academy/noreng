@@ -17,6 +17,11 @@ def new_game(game):
     game.display_menu(menus.new_game)
     game.set_action_from_menu('Choose an option: ')
 
+def reenter_name(game):
+    game.title('Reenter name')
+    game.player.change_name()
+    game.set_next_action(new_game)
+
 def show_exit_menu(game):
     game.title('Do you really want to exit?')
     confirm = input('Press \'q\' to confirm: ')
@@ -29,14 +34,6 @@ def exit_from_game(game):
 
 def resume(game):
     game.resume_action()
-
-def reenter_name(game):
-    game.title('Reenter name')
-    game.player.change_name()
-    game.clear_display()
-    game.player.display_greet()
-    game.display_menu(menus.new_game)
-    game.set_action_from_menu('Choose from the options above: ')
 
 def roll_stats(game):
     game.title('Roll stats...')
