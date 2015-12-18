@@ -13,7 +13,7 @@ class TestMenuItem(unittest.TestCase):
     def test_menu_item_representation(self):
         menuitem = MenuItem('1', 'Load Game')
         menuitem = str(menuitem)
-        self.assertEqual(menuitem, '1 Load Game')
+        self.assertEqual(menuitem, '1 > Load Game')
 
 class TestMenu(unittest.TestCase):
     def setUp(self):
@@ -27,15 +27,7 @@ class TestMenu(unittest.TestCase):
 
     def test_get_menu_items(self):
         menu = self.testmenu
-        self.assertEqual(menu.get_menu(), '1 Test\n2 Test2')
-
-    def test_select_menu_item(self):
-        menu = self.testmenu
-        x = True
-        self.assertTrue(menu.select_item(1, x))
-        self.assertFalse(menu.select_item(2, x))
-        self.assertEqual(str(menu.select_item('8', x)), '8 is wrong input')
-        self.assertEqual(str(menu.select_item('abc', x)), 'abc is wrong input')
+        self.assertEqual(menu.get_menu(), '1 > Test\n2 > Test2')
 
 if __name__ == "__main__":
     unittest.main()
