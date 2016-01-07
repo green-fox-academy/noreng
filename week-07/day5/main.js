@@ -1,6 +1,6 @@
 'use strict';
 
-var imageIndex = 0;
+var currentIndex = 0;
 
 var images = [
   'http://lorempixel.com/400/200/technics/1',
@@ -10,32 +10,36 @@ var images = [
 ];
 
 var bigPicture = document.querySelector('.gallery');
-var leftButton = document.querySelector('.left');
-var rightButton = document.querySelector('.right');
+var buttons = document.querySelector('.buttons');
 var thumbnails = document.querySelector('.thumbnails');
 
-leftButton.addEventListener('click', function() {
-  if (imageIndex > 0) {
-    imageIndex--;
-  } else {
-    imageIndex = images.length - 1;
-  }
+buttons.addEventListener('click', function(event) {
+  setIndexByDirection(event.target.id);
   displayCurrentImage();
 });
 
-rightButton.addEventListener('click', function() {
-  if (imageIndex < images.length - 1) {
-    imageIndex++;
-  } else {
-    imageIndex = 0;
+function setIndexByDirection(direction) {
+  if (direction === 'next') {
+    currentIndex++;
+  } else if (direction === 'prev') {
+    currentIndex--;
   }
-  displayCurrentImage();
-});
+  handleIndexOnEnds();
+}
+
+function handleIndexOnEnds(index) {
+  var end = images.length - 1;
+  if (currentIndex < 0) {
+    currentIndex = end;
+  } else if (end < currentIndex) {
+    currentIndex = 0;
+  }
+}
 
 thumbnails.addEventListener('mouseover', function(event) {
   if (event.target.src) {
     var src = event.target.src;
-    imageIndex = getIndexOfElement(event.target);
+    currentIndex = getIndexOfElement(event.target);
     displayCurrentImage();
   }
 });
@@ -51,19 +55,19 @@ thumbnails.addEventListener('mouseover', function(event) {
 })()
 
 function displayCurrentImage() {
-  setCurrentThumbnailActive();
-  bigPicture.setAttribute('src', images[imageIndex]);
-}
-
-function setCurrentThumbnailActive() {
   removeActiveClassFromThumbnails();
-  var current = thumbnails.children[imageIndex];
-  current.classList.add('active');
+  setCurrentThumbnailActive();
+  bigPicture.setAttribute('src', images[currentIndex]);
 }
 
 function removeActiveClassFromThumbnails() {
   var active = thumbnails.querySelector(".active");
   if (active) active.classList.remove('active');
+}
+
+function setCurrentThumbnailActive() {
+  var current = thumbnails.children[currentIndex];
+  current.classList.add('active');
 }
 
 function getIndexOfElement(element) {
