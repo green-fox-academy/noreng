@@ -12,6 +12,7 @@ var images = [
 var bigPicture = document.querySelector('.gallery');
 var leftButton = document.querySelector('.left');
 var rightButton = document.querySelector('.right');
+var thumbnails = document.querySelector('.thumbnails');
 
 leftButton.addEventListener('click', function() {
   if (imageIndex > 0) {
@@ -32,3 +33,12 @@ rightButton.addEventListener('click', function() {
   console.log(imageIndex);
   bigPicture.setAttribute('src', images[imageIndex]);
 });
+
+(function createThumbnails(src) {
+  var image;
+  for (var i = 0; i < images.length; i++) {
+    image = document.createElement('img');
+    image.setAttribute('src', images[i] );
+    thumbnails.appendChild(image);
+  }
+})()

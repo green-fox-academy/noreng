@@ -1,0 +1,12 @@
+.container {
+  text-align: center;
+}
+
+.buttons {
+  margin: 15px 0px;
+}
+
+.thumbnails img {
+  height: 60px;
+  padding: 5px;
+}
