@@ -12,6 +12,6 @@
   padding: 5px;
 }
 
-.thumbnails img:hover {
+.thumbnails .active {
   opacity: 1;
 }
