@@ -18,6 +18,13 @@ buttons.addEventListener('click', function(event) {
   displayCurrentImage();
 });
 
+thumbnails.addEventListener('mouseover', function(event) {
+  if (event.target.src) {
+    setIndexBySelectedThumbnail(event.target);
+    displayCurrentImage();
+  }
+});
+
 function setIndexByDirection(direction) {
   if (direction === 'next') {
     currentIndex++;
@@ -25,6 +32,10 @@ function setIndexByDirection(direction) {
     currentIndex--;
   }
   handleIndexOnEnds();
+}
+
+function setIndexBySelectedThumbnail(thumbnail) {
+  currentIndex = getIndexOfElement(event.target);
 }
 
 function handleIndexOnEnds(index) {
@@ -35,24 +46,6 @@ function handleIndexOnEnds(index) {
     currentIndex = 0;
   }
 }
-
-thumbnails.addEventListener('mouseover', function(event) {
-  if (event.target.src) {
-    var src = event.target.src;
-    currentIndex = getIndexOfElement(event.target);
-    displayCurrentImage();
-  }
-});
-
-(function generateThumbnails(src) {
-  var thumbnail;
-  for (var i = 0; i < images.length; i++) {
-    thumbnail = document.createElement('img');
-    thumbnail.setAttribute('src', images[i] );
-    thumbnails.appendChild(thumbnail);
-  }
-  setCurrentThumbnailActive()
-})()
 
 function displayCurrentImage() {
   removeActiveClassFromThumbnails();
@@ -69,6 +62,16 @@ function setCurrentThumbnailActive() {
   var current = thumbnails.children[currentIndex];
   current.classList.add('active');
 }
+
+(function generateThumbnails(src) {
+  var thumbnail;
+  for (var i = 0; i < images.length; i++) {
+    thumbnail = document.createElement('img');
+    thumbnail.setAttribute('src', images[i] );
+    thumbnails.appendChild(thumbnail);
+  }
+  setCurrentThumbnailActive()
+})()
 
 function getIndexOfElement(element) {
   var siblings = element.parentNode.childNodes;
