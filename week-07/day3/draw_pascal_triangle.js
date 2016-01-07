@@ -18,8 +18,17 @@ var triangle = [], temp_row = [];
   return triangle;
 }
 
+function stringify(triangle) {
+  var width = triangle.length;
+  var indented = triangle.map(function(row, index) {
+    var n = width - 1 - index;
+    return add_n_whitespaces_to_start(n, row);
+  });
+  return replace_commas_with_whitespaces(indented.join('\n'));
+}
+
 function calculate_nth_number(row, col) {
-  return combination(row, col);
+  return Math.round(combination(row, col));
 }
 
 function combination(n, k) {
@@ -31,15 +40,6 @@ function factorial(num) {
   if (num < 0) return -1;
   else if (num == 0) return 1;
   else return (num * factorial(num - 1));
-}
-
-function stringify(triangle) {
-  var width = triangle.length;
-  var indented = triangle.map(function(row, index) {
-    var n = width - 1 - index;
-    return add_n_whitespaces_to_start(n, row);
-  });
-  return replace_commas_with_whitespaces(indented.join('\n'));
 }
 
 function add_n_whitespaces_to_start(n, string) {
