@@ -8,5 +8,10 @@
 
 .thumbnails img {
   height: 60px;
+  opacity: 0.3;
   padding: 5px;
+}
+
+.thumbnails img:hover {
+  opacity: 1;
 }
