@@ -14,25 +14,26 @@ init();
 function init() {
   currentIndex = 0;
   initDomElements();
+  displayCurrentImage();
   generateThumbnails();
   setCurrentThumbnailActive();
 }
 
 function initDomElements() {
-  image = document.querySelector('.gallery');
+  image = document.querySelector('.image-wrapper');
   buttons = document.querySelector('.buttons');
   thumbnails = document.querySelector('.thumbnails');
 }
 
 buttons.addEventListener('click', function(event) {
   setIndexByDirection(event.target.id);
-  displayCurrentImage();
+  changeCurrentImage();
 });
 
 thumbnails.addEventListener('mouseover', function(event) {
   if (event.target.src) {
     setIndexBySelectedThumbnail(event.target);
-    displayCurrentImage();
+    changeCurrentImage();
   }
 });
 
@@ -58,15 +59,19 @@ function handleIndexOnEnds(index) {
   }
 }
 
-function displayCurrentImage() {
+function changeCurrentImage() {
   removeActiveClassFromThumbnails();
   setCurrentThumbnailActive();
+  displayCurrentImage();
+}
+
+function displayCurrentImage() {
   image.setAttribute('src', imageSources[currentIndex]);
 }
 
 function removeActiveClassFromThumbnails() {
   var active = thumbnails.querySelector(".active");
-  if (active) active.classList.remove('active');
+  active.classList.remove('active');
 }
 
 function setCurrentThumbnailActive() {
