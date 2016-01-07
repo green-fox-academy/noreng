@@ -65,11 +65,11 @@ function setCurrentThumbnailActive() {
 
 (function generateThumbnails(src) {
   var thumbnail;
-  for (var i = 0; i < images.length; i++) {
+  images.forEach(function(src) {
     thumbnail = document.createElement('img');
-    thumbnail.setAttribute('src', images[i] );
+    thumbnail.setAttribute('src', src );
     thumbnails.appendChild(thumbnail);
-  }
+  });
   setCurrentThumbnailActive()
 })()
 
