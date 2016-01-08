@@ -4,6 +4,10 @@ var imageSources = [
   'http://lorempixel.com/400/200/technics/1',
   'http://lorempixel.com/400/200/technics/2',
   'http://lorempixel.com/400/200/technics/3',
+  'http://lorempixel.com/400/200/technics/4',
+  'http://lorempixel.com/400/200/technics/1',
+  'http://lorempixel.com/400/200/technics/2',
+  'http://lorempixel.com/400/200/technics/3',
   'http://lorempixel.com/400/200/technics/4'
 ];
 
@@ -36,6 +40,11 @@ thumbnails.addEventListener('mouseover', function(event) {
     changeCurrentImage();
   }
 });
+
+document.addEventListener('keydown', function(event) {
+  setIndexByDirection(getKeyDirection(event.keyCode));
+  changeCurrentImage();
+}, false);
 
 function setIndexByDirection(direction) {
   if (direction === 'next') {
@@ -94,5 +103,13 @@ function getIndexOfDomElement(element) {
     if (siblings[i] === element) {
       return i
     }
+  }
+}
+
+function getKeyDirection(keyCode) {
+  if (keyCode === 37) {
+    return 'prev'
+  } else if (keyCode=== 39) {
+    return 'next'
   }
 }
