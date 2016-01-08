@@ -7,8 +7,6 @@ var imageSources = [
   'http://lorempixel.com/400/200/technics/4',
   'http://lorempixel.com/400/200/technics/1',
   'http://lorempixel.com/400/200/technics/2',
-  'http://lorempixel.com/400/200/technics/3',
-  'http://lorempixel.com/400/200/technics/4'
 ];
 
 var currentIndex, image, buttons, thumbnails;
@@ -18,6 +16,7 @@ init();
 function init() {
   currentIndex = 0;
   initDomElements();
+  initEvents();
   displayCurrentImage();
   generateThumbnails();
   setCurrentThumbnailActive();
@@ -29,22 +28,28 @@ function initDomElements() {
   thumbnails = document.querySelector('.thumbnails');
 }
 
-buttons.addEventListener('click', function(event) {
+function initEvents() {
+  buttons.addEventListener('click', buttonClickEvent);
+  thumbnails.addEventListener('mouseover', thumbnailsMouseOverEvent);
+  document.addEventListener('keydown', keyDownEvent, false);
+}
+
+function buttonClickEvent(event) {
   setIndexByDirection(event.target.id);
   changeCurrentImage();
-});
+}
 
-thumbnails.addEventListener('mouseover', function(event) {
+function thumbnailsMouseOverEvent(event) {
   if (event.target.src) {
     setIndexBySelectedThumbnail(event.target);
     changeCurrentImage();
   }
-});
+}
 
-document.addEventListener('keydown', function(event) {
+function keyDownEvent(event) {
   setIndexByDirection(getKeyDirection(event.keyCode));
   changeCurrentImage();
-}, false);
+}
 
 function setIndexByDirection(direction) {
   if (direction === 'next') {
@@ -59,7 +64,7 @@ function setIndexBySelectedThumbnail(thumbnail) {
   currentIndex = getIndexOfDomElement(thumbnail);
 }
 
-function handleIndexOnEnds(index) {
+function handleIndexOnEnds() {
   var end = imageSources.length - 1;
   if (currentIndex < 0) {
     currentIndex = end;
