@@ -47,7 +47,7 @@ function setIndexByDirection(direction) {
 }
 
 function setIndexBySelectedThumbnail(thumbnail) {
-  currentIndex = getIndexOfElement(event.target);
+  currentIndex = getIndexOfDomElement(thumbnail);
 }
 
 function handleIndexOnEnds(index) {
@@ -88,7 +88,7 @@ function generateThumbnails() {
   });
 }
 
-function getIndexOfElement(element) {
+function getIndexOfDomElement(element) {
   var siblings = element.parentNode.childNodes;
   for (var i = 0; i < siblings.length; i++) {
     if (siblings[i] === element) {
