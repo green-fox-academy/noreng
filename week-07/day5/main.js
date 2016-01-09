@@ -6,7 +6,6 @@ var imageSources = [
   'http://lorempixel.com/400/200/technics/3',
   'http://lorempixel.com/400/200/technics/4',
   'http://lorempixel.com/400/200/technics/1',
-  'http://lorempixel.com/400/200/technics/2',
 ];
 
 var currentIndex, image, buttons, thumbnails;
@@ -19,7 +18,7 @@ function init() {
   initEvents();
   displayCurrentImage();
   generateThumbnails();
-  setCurrentThumbnailActive();
+  setActiveClassToThumbnail();
 }
 
 function initDomElements() {
@@ -29,25 +28,35 @@ function initDomElements() {
 }
 
 function initEvents() {
-  buttons.addEventListener('click', buttonClickEvent);
-  thumbnails.addEventListener('mouseover', thumbnailsMouseOverEvent);
-  document.addEventListener('keydown', keyDownEvent, false);
+  buttons.addEventListener('click', changeImageWithButtons);
+  thumbnails.addEventListener('mouseover', changeImageWithThumbnails);
+  document.addEventListener('keydown', changeImageWithKeys, false);
 }
 
-function buttonClickEvent(event) {
+function generateThumbnails() {
+  var thumbnail;
+  imageSources.forEach(function(src) {
+    thumbnail = document.createElement('img');
+    thumbnail.setAttribute('src', src );
+    thumbnails.appendChild(thumbnail);
+  });
+}
+
+function changeImageWithButtons(event) {
   setIndexByDirection(event.target.id);
   changeCurrentImage();
 }
 
-function thumbnailsMouseOverEvent(event) {
+function changeImageWithThumbnails(event) {
   if (event.target.src) {
     setIndexBySelectedThumbnail(event.target);
     changeCurrentImage();
   }
 }
 
-function keyDownEvent(event) {
-  setIndexByDirection(getKeyDirection(event.keyCode));
+function changeImageWithKeys(event) {
+  var keyDirection = getDirectionOfKey(event.keyCode);
+  setIndexByDirection(keyDirection);
   changeCurrentImage();
 }
 
@@ -73,9 +82,17 @@ function handleIndexOnEnds() {
   }
 }
 
+function getDirectionOfKey(keyCode) {
+  if (keyCode === 37) {
+    return 'prev'
+  } else if (keyCode=== 39) {
+    return 'next'
+  }
+}
+
 function changeCurrentImage() {
-  removeActiveClassFromThumbnails();
-  setCurrentThumbnailActive();
+  removeActiveClassFromThumbnail();
+  setActiveClassToThumbnail();
   displayCurrentImage();
 }
 
@@ -83,23 +100,14 @@ function displayCurrentImage() {
   image.setAttribute('src', imageSources[currentIndex]);
 }
 
-function removeActiveClassFromThumbnails() {
+function removeActiveClassFromThumbnail() {
   var active = thumbnails.querySelector(".active");
   active.classList.remove('active');
 }
 
-function setCurrentThumbnailActive() {
+function setActiveClassToThumbnail() {
   var current = thumbnails.children[currentIndex];
   current.classList.add('active');
-}
-
-function generateThumbnails() {
-  var thumbnail;
-  imageSources.forEach(function(src) {
-    thumbnail = document.createElement('img');
-    thumbnail.setAttribute('src', src );
-    thumbnails.appendChild(thumbnail);
-  });
 }
 
 function getIndexOfDomElement(element) {
@@ -108,13 +116,5 @@ function getIndexOfDomElement(element) {
     if (siblings[i] === element) {
       return i
     }
-  }
-}
-
-function getKeyDirection(keyCode) {
-  if (keyCode === 37) {
-    return 'prev'
-  } else if (keyCode=== 39) {
-    return 'next'
   }
 }
