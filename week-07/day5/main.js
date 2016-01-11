@@ -10,6 +10,11 @@ var imageSources = [
 
 var currentIndex, image, buttons, thumbnails;
 
+var keyCodes = {
+  left: 37,
+  right: 39
+}
+
 init();
 
 function init() {
@@ -34,9 +39,8 @@ function initEvents() {
 }
 
 function generateThumbnails() {
-  var thumbnail;
   imageSources.forEach(function(src) {
-    thumbnail = document.createElement('img');
+    var thumbnail = document.createElement('img');
     thumbnail.setAttribute('src', src );
     thumbnails.appendChild(thumbnail);
   });
@@ -83,9 +87,9 @@ function handleIndexOnEnds() {
 }
 
 function getDirectionOfKey(keyCode) {
-  if (keyCode === 37) {
+  if (keyCode === keyCodes.left) {
     return 'prev'
-  } else if (keyCode=== 39) {
+  } else if (keyCode === keyCodes.right) {
     return 'next'
   }
 }
