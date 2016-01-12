@@ -32,12 +32,12 @@ function restart() {
   updateAllStats();
 }
 
-function createCandies(event) {
+function createCandies() {
   candies++;
   updateCandies();
 }
 
-function buyLollipop(event) {
+function buyLollipop() {
   if (lollipopPrice <= candies) {
     candies -= lollipopPrice;
     lollipops++;
