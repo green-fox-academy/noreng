@@ -4,6 +4,8 @@ var form;
 var inputField;
 var todoItems;
 
+var request = new Request();
+
 init();
 
 function init() {
@@ -25,7 +27,7 @@ function initEvents() {
 }
 
 function getItemsFromServer() {
-  getAllTodoItems(insertItemsToDom);
+  request.getAllTodoItems(insertItemsToDom);
 }
 
 function insertItemsToDom(items) {
@@ -37,7 +39,7 @@ function insertItemsToDom(items) {
 function submitItem(event) {
   var text = inputField.value;
   if (text.length > 2) {
-    postItemToServer(text, addItemToDom);
+    request.postItemToServer(text, addItemToDom);
     inputField.value = '';
   }
   event.preventDefault();
@@ -49,8 +51,6 @@ function addItemToDom(item) {
 }
 
 function deleteItemFromDom(item) {
-  console.log('item' + item);
-  console.log('itemid' + item.id);
   var element = document.getElementById(item.id);
   element.remove();
 }
@@ -68,7 +68,7 @@ function changeItemStatus(event) {
   if (element.tagName === 'LI') {
     var completed = true;
     if (element.className === 'done') completed = false;
-    updateItemOnServer(element.id, element.innerText,
+    request.updateItemOnServer(element.id, element.innerText,
       completed, toggleItemStatus);
   }
 }
@@ -81,6 +81,6 @@ function toggleItemStatus(changedItem) {
 function removeItem(event) {
   var element = event.target;
   if (element.tagName === 'LI') {
-    deleteItemFromServer(element.id, deleteItemFromDom);
+    request.deleteItemFromServer(element.id, deleteItemFromDom);
   }
 }
