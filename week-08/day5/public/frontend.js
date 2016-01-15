@@ -32,7 +32,7 @@ function getItemsFromServer() {
 // Dom action
 function insertItemsToDom(items) {
   items.forEach(function(item) {
-    addItemToDom(item.id, item.text, item.completed);
+    addItemToDom(item);
   });
 }
 
@@ -47,46 +47,46 @@ function submitItem(event) {
 };
 
 // Dom action
-function addItemToDom(id, text, completed) {
-  var item = createOneItem(id, text, completed);
-  todoItems.appendChild(item);
+function addItemToDom(item) {
+  var element = createOneItem(item);
+  todoItems.appendChild(element);
 }
 
 // Dom action
-function deleteItemFromDom(id) {
-  var item = document.getElementById(id);
-  item.remove();
+function deleteItemFromDom(item) {
+  var element = document.getElementById(item.id);
+  element.remove();
 }
 
 // Dom action
-function createOneItem(id, text, completed) {
-  var item = document.createElement("li");
-  if (completed) item.setAttribute('class', 'done');
-  item.setAttribute('id', id);
-  item.innerText = text;
-  return item;
+function createOneItem(item) {
+  var element = document.createElement("li");
+  if (item.completed) element.setAttribute('class', 'done');
+  element.setAttribute('id', item.id);
+  element.innerText = item.text;
+  return element;
 }
 
 // Event
 function changeItemStatus(event) {
-  var item = event.target;
-  if (item.tagName === 'LI') {
+  var element = event.target;
+  if (element.tagName === 'LI') {
     var completed = true;
-    if (item.className === 'done') completed = false;
-    updateItemOnServer(item.id, item.innerText, completed, toggleItemStatus);
+    if (element.className === 'done') completed = false;
+    updateItemOnServer(element.id, element.innerText, completed, toggleItemStatus);
   }
 }
 
 // Dom action
 function toggleItemStatus(changedItem) {
-  var item = document.getElementById(changedItem.id);
-  item.classList.toggle('done');
+  var element = document.getElementById(changedItem.id);
+  element.classList.toggle('done');
 }
 
 // Event
 function removeItem(event) {
-  var item = event.target;
-  if (item.tagName === 'LI') {
-    deleteItemFromServer(item.id, deleteItemFromDom);
+  var element = event.target;
+  if (element.tagName === 'LI') {
+    deleteItemFromServer(element.id, deleteItemFromDom);
   }
 }

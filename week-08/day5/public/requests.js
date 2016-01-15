@@ -21,8 +21,8 @@ function postItemToServer(text, callback) {
   req.send(JSON.stringify({text: text}));
   req.onreadystatechange = function () {
     if (req.readyState === 4) {
-      var res = JSON.parse(req.response);
-      return callback(res.id, res.text, res.completed);
+      var item = JSON.parse(req.response);
+      return callback(item);
     }
   };
 }
@@ -33,8 +33,8 @@ function deleteItemFromServer(id, callback) {
   req.send();
   req.onreadystatechange = function () {
     if (req.readyState === 4) {
-      var res = JSON.parse(req.response);
-      return callback(res.id);
+      var item = JSON.parse(req.response);
+      return callback(item);
     }
   };
 }
@@ -46,8 +46,8 @@ function updateItemOnServer(id, text, completed, callback) {
   req.send(JSON.stringify({'text': text, 'completed': completed}));
   req.onreadystatechange = function () {
     if (req.readyState === 4) {
-      var res = JSON.parse(req.response);
-      return callback(res);
+      var item = JSON.parse(req.response);
+      return callback(item);
     }
   };
 }
