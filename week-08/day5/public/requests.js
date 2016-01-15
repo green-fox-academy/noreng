@@ -1,6 +1,6 @@
 'use strict';
 
-var url = 'https://mysterious-dusk-8248.herokuapp.com/todos';
+var url = 'http://localhost:3000/todos';
 
 function getAllTodoItems(callback) {
   var req = new XMLHttpRequest();
