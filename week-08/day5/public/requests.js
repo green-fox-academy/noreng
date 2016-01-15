@@ -1,53 +1,36 @@
 'use strict';
 
-var url = 'http://localhost:3000/todos';
+var basicUrl = 'http://localhost:3000/todos';
 
 function getAllTodoItems(callback) {
-  var req = new XMLHttpRequest();
-  req.open('GET', url);
-  req.send();
-  req.onreadystatechange = function () {
-    if (req.readyState === 4) {
-      var items = JSON.parse(req.response);
-      return callback(items);
-    }
-  };
+  return createRequest('GET', basicUrl, null , callback);
 }
 
 function postItemToServer(text, callback) {
-  var req = new XMLHttpRequest();
-  req.open('POST', url);
-  req.setRequestHeader('Content-Type', 'application/json');
-  req.send(JSON.stringify({text: text}));
-  req.onreadystatechange = function () {
-    if (req.readyState === 4) {
-      var item = JSON.parse(req.response);
-      return callback(item);
-    }
-  };
+  var data = JSON.stringify({ text: text });
+  return createRequest('POST', basicUrl, data , callback);
 }
 
 function deleteItemFromServer(id, callback) {
-  var req = new XMLHttpRequest();
-  req.open('DELETE', url + '/' + id);
-  req.send();
-  req.onreadystatechange = function () {
-    if (req.readyState === 4) {
-      var item = JSON.parse(req.response);
-      return callback(item);
-    }
-  };
+  var url = basicUrl + '/' + id;
+  return createRequest('DELETE', url, null , callback);
 }
 
 function updateItemOnServer(id, text, completed, callback) {
+  var url = basicUrl + '/' + id;
+  var data = JSON.stringify({ 'text': text, 'completed': completed });
+  return createRequest('PUT', url, data , callback);
+}
+
+function createRequest(method, url, data, callback) {
   var req = new XMLHttpRequest();
-  req.open('PUT', url + '/' + id);
+  req.open(method, url);
   req.setRequestHeader('Content-Type', 'application/json');
-  req.send(JSON.stringify({'text': text, 'completed': completed}));
+  req.send(data);
   req.onreadystatechange = function () {
     if (req.readyState === 4) {
-      var item = JSON.parse(req.response);
-      return callback(item);
+      var res = JSON.parse(req.response);
+      return callback(res);
     }
   };
 }
