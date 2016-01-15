@@ -3,7 +3,7 @@
 var basicUrl = 'http://localhost:3000/todos';
 
 function getAllTodoItems(callback) {
-  return createRequest('GET', basicUrl, null , callback);
+  return createRequest('GET', basicUrl, null, callback);
 }
 
 function postItemToServer(text, callback) {
@@ -13,7 +13,7 @@ function postItemToServer(text, callback) {
 
 function deleteItemFromServer(id, callback) {
   var url = basicUrl + '/' + id;
-  return createRequest('DELETE', url, null , callback);
+  return createRequest('DELETE', url, null, callback);
 }
 
 function updateItemOnServer(id, text, completed, callback) {

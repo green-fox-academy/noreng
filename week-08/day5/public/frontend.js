@@ -49,6 +49,8 @@ function addItemToDom(item) {
 }
 
 function deleteItemFromDom(item) {
+  console.log('item' + item);
+  console.log('itemid' + item.id);
   var element = document.getElementById(item.id);
   element.remove();
 }
@@ -79,6 +81,6 @@ function toggleItemStatus(changedItem) {
 function removeItem(event) {
   var element = event.target;
   if (element.tagName === 'LI') {
-    deleteItemFromServer(element, deleteItemFromDom);
+    deleteItemFromServer(element.id, deleteItemFromDom);
   }
 }
