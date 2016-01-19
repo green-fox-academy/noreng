@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 32px;
+}
+
+body {
+  color: white;
+  background-color: #1D1F21;
+}
+
+.container {
+  margin: 50px 40px 0px 40px;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+input {
+  background: none;
+  border: 0;
+  border-bottom: 2px solid #3B3F3F;
+  color: white;
+  margin-bottom: 15px;
+}
+
+input:focus {
+  outline: none;
+}
+
+input::-webkit-input-placeholder {
+color: #3B3F3F !important;
+}
+
+ul {
+  padding-left: 0px;
+}
+
+li {
+  list-style: none;
+  line-height: 1.8em;
+}
+
+li:hover {
+  cursor: pointer;
+  color: #F1C40F;
+}
+
+li.done {
+  text-decoration: line-through;
+  color: #3B3F3F;
+}
+
+/* prevent highlight on doubleclick */
+ul li {
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
