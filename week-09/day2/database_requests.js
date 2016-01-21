@@ -10,11 +10,20 @@ var connection = mysql.createConnection({
 connection.connect();
 
 function getItems(callback) {
-  var sql = 'SELECT id, text, completed FROM `todos`'
+  var sql = 'SELECT id, text, completed FROM `todos`';
   connection.query(sql, function(err, res) {
     if (err) throw err;
     var items = res;
     callback(items);
+  });
+}
+
+function getOneItem(id, callback) {
+  var sql = 'SELECT id, text, completed FROM `todos` WHERE id=?';
+  connection.query(sql, id, function(err, res) {
+    if (err) throw err;
+    var item = res;
+    callback(item);
   });
 }
 
@@ -54,6 +63,7 @@ function removeItem(id, callback) {
 
 module.exports = {
   getItems: getItems,
+  getOneItem: getOneItem,
   addItem: addItem,
   updateItem: updateItem,
   removeItem: removeItem

@@ -16,6 +16,13 @@ app.get('/todos', function (req, res) {
   });
 });
 
+app.get('/todos/:id', function (req, res) {
+  var id = req.params.id;
+  database.getOneItem(id, function (item) {
+    res.status(200).json(item);
+  });
+});
+
 app.post('/todos', function (req, res) {
   var attributes = req.body;
   database.addItem(attributes, function (newItem) {
@@ -24,7 +31,7 @@ app.post('/todos', function (req, res) {
 });
 
 app.put('/todos/:id', function (req, res) {
-  var id = req.params.id
+  var id = req.params.id;
   var attributes = req.body;
   database.updateItem(id, attributes, function (updatedItem) {
     res.status(200).json(updatedItem);
@@ -39,7 +46,7 @@ app.delete('/todos/:id', function (req, res) {
 });
 
 app.listen(3000, function () {
-  console.log('Listening on port 3000...')
+  console.log('Listening on port 3000...');
 });
 
 function logRequest(req, res, next) {
