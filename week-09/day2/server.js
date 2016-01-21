@@ -36,9 +36,10 @@ app.put('/todos/:id', function (req, res) {
 });
 
 app.delete('/todos/:id', function (req, res) {
-  var id = req.params.id;
-  database.removeItem(id, function (removedItem) {
-    res.status(200).json(removedItem);
+  findItem(req, res, function (item) {
+    database.removeItem(item.id, function (removedItem) {
+      res.status(200).json(removedItem);
+    });
   });
 });
 
@@ -48,9 +49,9 @@ app.listen(3000, function () {
 
 function findItem(req, res, callback) {
   var id = parseInt(req.params.id);
-  database.getOneItem(id, function (item) {
-    if (isItemFound(item)) {
-      callback(item);
+  database.getOneItem(id, function (items) {
+    if (isItemFound(items)) {
+      callback(items[0]);
     } else {
       res.status(401).json({error: 'Item not found'})
     }
