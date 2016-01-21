@@ -28,10 +28,11 @@ app.post('/todos', function (req, res) {
 });
 
 app.put('/todos/:id', function (req, res) {
-  var id = req.params.id;
   var attributes = req.body;
-  database.updateItem(id, attributes, function (updatedItem) {
-    res.status(200).json(updatedItem);
+  findItem(req, res, function (item) {
+    database.updateItem(item.id, attributes, function (updatedItem) {
+      res.status(200).json(updatedItem);
+    });
   });
 });
 
