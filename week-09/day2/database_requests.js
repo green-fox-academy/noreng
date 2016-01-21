@@ -1,4 +1,4 @@
-var mysql      = require('mysql');
+var mysql = require('mysql');
 
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -22,42 +22,34 @@ function getOneItem(id, callback) {
   var sql = 'SELECT id, text, completed FROM `todos` WHERE id=?';
   connection.query(sql, id, function(err, res) {
     if (err) throw err;
-    var item = res;
+    var item = res[0];
     callback(item);
   });
 }
 
 function addItem(attributes, callback) {
-  connection.query('INSERT INTO `todos` SET ?', attributes, function(err, res) {
+  var sql = 'INSERT INTO `todos` SET ?';
+  connection.query(sql, attributes, function(err, res) {
     if (err) throw err;
-    var newItem = {
-      'id': res.insertId,
-      'text': attributes.text,
-      'completed': false
-      };
-    callback(newItem);
+    var newId = res.insertId;
+    getOneItem(newId, callback);
   });
 }
 
 function updateItem(id, attributes, callback) {
   var sql = 'UPDATE `todos` SET ?? = ?, ?? = ? WHERE id=?';
-  var inserts = ['text', attributes.text, 'completed', attributes.completed, id]
+  var inserts = ['text', attributes.text, 'completed', attributes.completed, id];
   connection.query(mysql.format(sql, inserts), function(err, res) {
     if (err) throw err;
-    var updatedItem = {
-      'id': id,
-      'text': attributes.text,
-      'completed': attributes.completed
-      };
-    callback(updatedItem);
+    getOneItem(id, callback);
   });
 }
 
 function removeItem(id, callback) {
-  connection.query('DELETE FROM `todos` WHERE `id`= ?', id, function(err, res) {
+  var sql = 'DELETE FROM `todos` WHERE `id`= ?';
+  connection.query(sql, id, function(err, res) {
     if (err) throw err;
-    var removed = {'id': id}
-    callback(removed);
+    callback();
   });
 }
 
