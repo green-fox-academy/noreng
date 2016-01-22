@@ -21,7 +21,7 @@
   function initEvents() {
     form.addEventListener('submit', submitItem, false);
     todoItems.addEventListener('click', changeItemStatus);
-    todoItems.addEventListener('dblclick', removeItem);
+    todoItems.addEventListener('contextmenu', removeItem);
   }
 
   function getItemsFromServer() {
@@ -50,7 +50,7 @@
 
   function deleteItemFromDom(item) {
     var element = document.getElementById(item.id);
-    element.remove();
+    Velocity(element, 'slideUp', {duration: 500});
   }
 
   function createOneItem(item) {
@@ -81,5 +81,6 @@
     if (element.tagName === 'LI') {
       request.deleteItemFromServer(element.id, deleteItemFromDom);
     }
+    event.preventDefault();
   }
 })();
