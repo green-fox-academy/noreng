@@ -19,9 +19,10 @@
   }
 
   function initEvents() {
+    var rightclick = 'contextmenu';
     form.addEventListener('submit', submitItem, false);
     todoItems.addEventListener('click', changeItemStatus);
-    todoItems.addEventListener('contextmenu', removeItem);
+    todoItems.addEventListener(rightclick, removeItem);
   }
 
   function getItemsFromServer() {
@@ -36,12 +37,16 @@
 
   function submitItem(event) {
     var text = inputField.value;
-    if (text.length > 2) {
+    if (isValidInput(text)) {
       request.postItemToServer(text, addItemToDom);
       inputField.value = '';
     }
     event.preventDefault();
   };
+
+  function isValidInput(text) {
+    return text.length > 2;
+  }
 
   function addItemToDom(item) {
     var element = createOneItem(item);
