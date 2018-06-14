@@ -1,11 +1,10 @@
 'use strict';
 
 var imageSources = [
-  'http://lorempixel.com/400/200/technics/1',
-  'http://lorempixel.com/400/200/technics/2',
-  'http://lorempixel.com/400/200/technics/3',
-  'http://lorempixel.com/400/200/technics/4',
-  'http://lorempixel.com/400/200/technics/1',
+  'https://picsum.photos/400/300?image=0',
+  'https://picsum.photos/400/300?image=1',
+  'https://picsum.photos/400/300?image=2',
+  'https://picsum.photos/400/300?image=3',
 ];
 
 var currentIndex, image, buttons, thumbnails;
